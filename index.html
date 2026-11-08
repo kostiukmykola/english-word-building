@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>English Word Building</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">WORD FORMATION GAME</p>
+        <h1>English Word Building</h1>
+        <p class="subtitle">Combine a prefix, a root and a suffix to build English words.</p>
+      </div>
+    </header>
+
+    <section class="work-area">
+      <div class="board-panel">
+        <div class="section-heading board-heading">
+          <div class="board-title"><p class="eyebrow">BUILD A WORD</p><h2>Your word board</h2></div>
+          <section class="stats" aria-label="Session statistics">
+            <article class="stat-card"><span class="stat-label">SCORE</span><strong id="score">0</strong></article>
+            <article class="stat-card"><span class="stat-label">WORDS FOUND</span><strong id="wordsFound">0</strong></article>
+          </section>
+        </div>
+
+        <div class="slots" id="slots">
+          <div class="slot-wrap">
+            <span class="slot-label">PREFIX</span>
+            <div class="slot" data-slot="prefix" tabindex="0" aria-label="Prefix slot"><span class="placeholder">Drop prefix</span></div>
+          </div>
+          <span class="join">+</span>
+          <div class="slot-wrap">
+            <span class="slot-label">ROOT</span>
+            <div class="slot" data-slot="root" tabindex="0" aria-label="Root word slot"><span class="placeholder">Drop root</span></div>
+          </div>
+          <span class="join">+</span>
+          <div class="slot-wrap">
+            <span class="slot-label">SUFFIX</span>
+            <div class="slot" data-slot="suffix" tabindex="0" aria-label="Suffix slot"><span class="placeholder">Drop suffix</span></div>
+          </div>
+        </div>
+
+        <div class="word-preview">
+          <span class="preview-label">WORD PREVIEW</span>
+          <strong id="wordPreview">—</strong>
+        </div>
+        <div id="feedback" class="feedback" role="status" aria-live="polite">Choose one tile from each group to build a word.</div>
+        <div class="board-actions">
+          <button id="clearBoardBtn" class="button button-ghost" type="button">Clear all slots</button>
+          <button id="newSessionBtn" class="button button-secondary" type="button">↻ New session</button>
+        </div>
+        <p class="hint">Tip: drag tiles to the board, or tap a tile and then tap its slot.</p>
+      </div>
+
+      <aside class="history-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">THIS SESSION</p><h2>Word history</h2></div>
+          <span id="historyCount" class="count-pill">0</span>
+        </div>
+        <div id="historyList" class="history-list">
+          <div class="empty-state"><span class="empty-icon">Aa</span><strong>No words yet</strong><p>Words you build successfully will appear here.</p></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="tiles-section">
+      <div class="section-heading tiles-heading">
+        <div><p class="eyebrow">AVAILABLE PARTS</p><h2>Choose your tiles</h2></div>
+        <p class="tile-instruction">Select a tile, then place it in the matching slot.</p>
+      </div>
+      <nav class="tile-tabs" aria-label="Tile categories">
+        <button class="tile-tab active" type="button" data-tab="prefix">Prefixes</button>
+        <button class="tile-tab" type="button" data-tab="root">Roots</button>
+        <button class="tile-tab" type="button" data-tab="suffix">Suffixes</button>
+      </nav>
+      <div class="tile-groups">
+        <details class="tile-group prefix-group" data-group="prefix" open>
+          <summary class="group-title"><span class="legend-dot"></span><h3>Prefixes</h3><span class="group-count">13</span><span class="accordion-chevron" aria-hidden="true"></span></summary>
+          <div class="tile-group-content"><div id="prefixTiles" class="tile-grid"></div></div>
+        </details>
+        <details class="tile-group root-group" data-group="root" open>
+          <summary class="group-title"><span class="legend-dot"></span><h3>Root words</h3><span class="group-count">24</span><span class="accordion-chevron" aria-hidden="true"></span></summary>
+          <div class="tile-group-content"><div id="rootTiles" class="tile-grid"></div></div>
+        </details>
+        <details class="tile-group suffix-group" data-group="suffix" open>
+          <summary class="group-title"><span class="legend-dot"></span><h3>Suffixes</h3><span class="group-count">15</span><span class="accordion-chevron" aria-hidden="true"></span></summary>
+          <div class="tile-group-content"><div id="suffixTiles" class="tile-grid"></div></div>
+        </details>
+      </div>
+    </section>
+
+    <footer>English Word Building <span>•</span> Each valid new word earns 10 points.</footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
